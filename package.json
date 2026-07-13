@@ -18,25 +18,25 @@
     "start": "npm run download && npm run cloudflare:create",
     "dev": "npm run download && cross-env DRY_RUN=1 npm run cloudflare:create:list",
     "dry": "npm run download && cross-env DRY_RUN=1 npm run cloudflare:create:list",
-    "download": "node --experimental-strip-types --experimental-transform-types download_lists.js",
-    "download:allowlist": "node --experimental-strip-types --experimental-transform-types download_lists.js allowlist",
-    "download:blocklist": "node --experimental-strip-types --experimental-transform-types download_lists.js blocklist",
+    "download": "node download_lists.js",
+    "download:allowlist": "node download_lists.js allowlist",
+    "download:blocklist": "node download_lists.js blocklist",
     "sync": "npm run download && npm run cloudflare:create",
     "sync:blocklist": "npm run download:blocklist && npm run cloudflare:create",
     "cloudflare:refresh": "npm run download && npm run cloudflare:create",
     "cloudflare:refresh:blocklist": "npm run download:blocklist && npm run cloudflare:create",
     "cloudflare:create": "npm run cloudflare:create:list && npm run cloudflare:create:rule",
     "cloudflare:delete": "npm run cloudflare:delete:rule && npm run cloudflare:delete:list",
-    "cloudflare:create:rule": "node --experimental-strip-types cf_gateway_rule_create.js",
-    "cloudflare:create:list": "node --experimental-strip-types cf_list_create.js",
-    "cloudflare:delete:rule": "node --experimental-strip-types cf_gateway_rule_delete.js",
-    "cloudflare:delete:list": "node --experimental-strip-types cf_list_delete.js",
-    "cloudflare:defragment": "node --experimental-strip-types cf_defragment.js",
+    "cloudflare:create:rule": "node cf_gateway_rule_create.js",
+    "cloudflare:create:list": "node cf_list_create.js",
+    "cloudflare:delete:rule": "node cf_gateway_rule_delete.js",
+    "cloudflare:delete:list": "node cf_list_delete.js",
+    "cloudflare:defragment": "node cf_defragment.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,mjs,cjs,json,md,yml,yaml}\"",
     "format:check": "prettier --check \"**/*.{js,mjs,cjs,json,md,yml,yaml}\"",
-    "test": "node --test --experimental-test-coverage",
+    "test": "node --test",
     "test:watch": "node --test --watch",
     "prepare": "node --eval \"console.log('✓ Ready for production')\""
   },
@@ -80,10 +80,5 @@
       "no-var": "error",
       "eqeqeq": ["error", "always"]
     }
-  },
-  "node": {
-    "experimental-strip-types": true,
-    "experimental-transform-types": true,
-    "experimental-test-coverage": true
   }
 }
