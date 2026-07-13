@@ -41,7 +41,7 @@
     "prepare": "node --eval \"console.log('✓ Ready for production')\""
   },
   "engines": {
-    "node": ">=26.0.0",
+    "node": ">=25.0.0",
     "npm": ">=10.0.0"
   },
   "packageManager": "npm@11.2.0",
