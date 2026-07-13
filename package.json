@@ -1,4 +1,7 @@
-  {
+{
+  "name": "cloudflare-gateway-pihole-scripts",
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
     "start": "npm run download && npm run cloudflare-create",
     "dry": "npm run download && DRY_RUN=1 npm run cloudflare-create:list",
@@ -9,18 +12,14 @@
     "cloudflare-refresh:blocklist": "npm run download:blocklist && npm run cloudflare-create",
     "cloudflare-create": "npm run cloudflare-create:list && npm run cloudflare-create:rule",
     "cloudflare-delete": "npm run cloudflare-delete:rule && npm run cloudflare-delete:list",
-    "cloudflare-create:rule": "node cf_gateway_rule_create.js",
-    "cloudflare-create:list": "node cf_list_create.js",
-    "cloudflare-delete:rule": "node cf_gateway_rule_delete.js",
-    "cloudflare-delete:list": "node cf_list_delete.js",
-    "cloudflare-defragment": "node cf_defragment.js"
+    "cloudflare-create:rule": "node --experimental-transform-types cf_gateway_rule_create.js",
+    "cloudflare-create:list": "node --experimental-transform-types cf_list_create.js",
+    "cloudflare-delete:rule": "node --experimental-transform-types cf_gateway_rule_delete.js",
+    "cloudflare-delete:list": "node --experimental-transform-types cf_list_delete.js",
+    "cloudflare-defragment": "node --experimental-transform-types cf_defragment.js"
   },
-  "type": "module",
-  "dependencies": {
-    "dotenv": "17.4.2"
-  },
+  "dependencies": {},
   "engines": {
-    "node": "24.15.0"
+    "node": ">=26.0.0"
   }
 }
- 
