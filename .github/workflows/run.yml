@@ -1,9 +1,9 @@
-name: Push Lists to Cloudflare
+Name: Push Lists to Cloudflare
 
 on:
   schedule:
-    # '0 17 * * *' nghĩa là chạy vào 00:00 mỗi ngày
-    - cron: '0 0 * * *'
+    # Chạy vào 00:00 UTC mỗi ngày
+    - cron: '0 17 * * *'
   workflow_dispatch:
 
 jobs:
@@ -25,5 +25,8 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Thêm các biến này để script nhận diện được cấu hình từ GitHub Variables
+          USER_DEFINED_ALLOWLIST_URLS: ${{ vars.USER_DEFINED_ALLOWLIST_URLS }}
+          USER_DEFINED_BLOCKLIST_URLS: ${{ vars.USER_DEFINED_BLOCKLIST_URLS }}
         run: npm start
         
